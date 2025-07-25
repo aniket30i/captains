@@ -5,11 +5,11 @@ import React from "react";
 
 const CaptainsPage = () => {
   return (
-    <div>
-      {/* <SearchTabs /> */}
-      <div className="flex pl-10">
-        {/* <Highlights />
-        <Stats /> */}
+    <div className="h-[800px]">
+      <SearchTabs />
+      <div className="flex pl-10 pr-10 h-full gap-6 drop-s">
+        <Highlights />
+        <Stats />
       </div>
     </div>
   );
