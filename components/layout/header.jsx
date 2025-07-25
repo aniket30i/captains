@@ -27,7 +27,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="flex gap-6 bg-navbar-bg p-4 justify-between px-28 items-center relative">
+    <nav className="flex gap-6 bg-none p-4 justify-between px-28 items-center relative">
       <Link href={"/"}>
         <Image
           src={"/logos/branding.png"}
@@ -36,7 +36,7 @@ export default function Navbar() {
           alt="branding logo"
         />
       </Link>
-      <div className="flex gap-6 p-4">
+      <div className="flex gap-6 p-4 font-gobold">
         {navItems.map((item) => (
           <Link
             key={item.href}
@@ -50,7 +50,7 @@ export default function Navbar() {
           >
             <span
               className={cn(
-                "px-2 py-2",
+                "px-2 py-2 font",
                 pathname === item.href ? "border-b-1 border-captain-yellow" : ""
               )}
             >

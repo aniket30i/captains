@@ -1,3 +1,4 @@
+import SearchTabs from "@/components/layout/SearchTabs";
 import Image from "next/image";
 
 // const gobold = localFont({
@@ -22,5 +23,9 @@ import Image from "next/image";
 // });
 
 export default function Home() {
-  return <div className=""></div>;
+  return (
+    <div className="w-fullp-2 flex justify-center text-lg text-gray-500 ">
+      Available Soon
+    </div>
+  );
 }
