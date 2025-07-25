@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { Avatar, AvatarImage } from "../ui/avatar";
 import { ChevronDown } from "lucide-react";
+import { useState } from "react";
 
 const navItems = [
   { name: "DASHBOARD", href: "/" },
@@ -15,11 +16,18 @@ const navItems = [
   { name: "CONTACT", href: "/contact" },
 ];
 
+const userDrop = ["Profile", " Settings", "Logout"];
+
 export default function Navbar() {
   const pathname = usePathname();
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+
+  const toggleDropdown = () => {
+    setDropdownOpen(!dropdownOpen);
+  };
 
   return (
-    <nav className="flex gap-6 bg-navbar-bg p-4 justify-between px-28 items-center">
+    <nav className="flex gap-6 bg-navbar-bg p-4 justify-between px-28 items-center relative">
       <Link href={"/"}>
         <Image
           src={"/logos/branding.png"}
@@ -51,7 +59,7 @@ export default function Navbar() {
           </Link>
         ))}
       </div>
-      <div className="flex ">
+      <div className="flex select-none">
         <div className="flex gap-[12px] ">
           <div>
             <Image
@@ -69,7 +77,21 @@ export default function Navbar() {
             <p className="text-white text-[16px]">Ethan Dev</p>
             <p className="text-gray-600 text-md">Admin</p>
           </div>
-          <ChevronDown className="text-white w-4 h-4 mt-2 hover:bg-white/20" />
+          <ChevronDown
+            className="text-white w-4 h-4 mt-2 hover:bg-white/20"
+            onClick={toggleDropdown}
+          />
+          {dropdownOpen && (
+            <div className="absolute right-13 top-11 text-gray-400 bg-navbar-bg shadow-lg rounded-md p-2 z-50 select-none cursor-pointer border-1 border-gray-800">
+              <ul>
+                {userDrop.map((item, index) => (
+                  <li key={item} className="hover:text-gray-200">
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
         </div>
       </div>
     </nav>
