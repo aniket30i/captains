@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { Avatar, AvatarImage } from "../ui/avatar";
+import { ChevronDown } from "lucide-react";
 
 const navItems = [
   { name: "DASHBOARD", href: "/" },
@@ -18,12 +19,12 @@ export default function Navbar() {
   const pathname = usePathname();
 
   return (
-    <nav className="flex gap-6 bg-navbar-bg p-4 shadow justify-between px-8">
+    <nav className="flex gap-6 bg-navbar-bg p-4 justify-between px-28 items-center">
       <Link href={"/"}>
         <Image
           src={"/logos/branding.png"}
-          width={150}
-          height={150}
+          width={180}
+          height={180}
           alt="branding logo"
         />
       </Link>
@@ -33,35 +34,42 @@ export default function Navbar() {
             key={item.href}
             href={item.href}
             className={cn(
-              "text-md font-medium transition-colors hover:text-primary",
-              pathname === item.href ? "text-primary" : "text-muted-foreground"
+              "text-[16px] font-medium transition-colors hover:text-captain-yellow",
+              pathname === item.href
+                ? "text-captain-yellow "
+                : "text-muted-foreground"
             )}
           >
-            {item.name}
+            <span
+              className={cn(
+                "px-2 py-2",
+                pathname === item.href ? "border-b-1 border-captain-yellow" : ""
+              )}
+            >
+              {item.name}
+            </span>
           </Link>
         ))}
       </div>
       <div className="flex ">
-        {/* <Image
-          src={"/icons/AI-Button.png"}
-          width={50}
-          height={1}
-          alt="AI Icon"
-        /> */}
-        <div className="flex gap-[12px]">
+        <div className="flex gap-[12px] ">
+          <div>
+            <Image
+              src={"/icons/ai-button.png"}
+              width={10}
+              height={10}
+              alt="AI Icon"
+              className="w-[40px] h-[40px] duration-200 hover:cursor-pointer border-1 border-captain-yellow rounded-full hover:bg-white/20 p-1.5 mr-2"
+            />
+          </div>
           <Avatar className="w-[40px] h-[40px]">
-            <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+            <AvatarImage src="/profile-picture/Coach-Photo.png" alt="@shadcn" />
           </Avatar>
           <div className="">
-            <p className="text-white">Ethan Dev</p>
-            <p className="text-gray-600">Admin</p>
+            <p className="text-white text-[16px]">Ethan Dev</p>
+            <p className="text-gray-600 text-md">Admin</p>
           </div>
-          {/* <Image
-            height={10}
-            width={10}
-            src={"/icons/chevron-down.png"}
-            className="bg-white"
-          /> */}
+          <ChevronDown className="text-white w-4 h-4 mt-2 hover:bg-white/20" />
         </div>
       </div>
     </nav>
