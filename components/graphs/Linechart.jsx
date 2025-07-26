@@ -33,6 +33,7 @@ const data = {
       borderColor: "#e3be65",
       backgroundColor: "rgba(227, 189, 100, 0.3)",
       fill: true,
+      pointRadius: 0,
     },
     {
       label: "Dataset 2",
@@ -41,6 +42,7 @@ const data = {
       borderColor: "#ff0048",
       backgroundColor: "rgba(166, 17, 60, 0.3)",
       fill: true,
+      pointRadius: 0,
     },
   ],
 };
@@ -52,6 +54,7 @@ const options = {
     legend: {
       display: false,
     },
+    datalabels: false,
   },
   scales: {
     x: {

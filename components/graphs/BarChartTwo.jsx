@@ -10,6 +10,7 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
+import ChartDataLabels from "chartjs-plugin-datalabels";
 import { Bar } from "react-chartjs-2";
 
 ChartJS.register(
@@ -18,7 +19,8 @@ ChartJS.register(
   BarElement,
   Title,
   Tooltip,
-  Legend
+  Legend,
+  ChartDataLabels
 );
 
 const labels = ["January", "February", "March", "April"];
@@ -45,7 +47,17 @@ const options = {
   plugins: {
     legend: { display: false },
     title: { display: false },
+    datalabels: {
+      color: "white",
+      anchor: "center",
+      align: "center",
+      font: {
+        weight: "bold",
+        size: 20,
+      },
+    },
   },
+
   scales: {
     x: {
       ticks: { color: "#fff" },
@@ -67,6 +79,8 @@ const options = {
         display: true,
         dash: [5, 3], // Dashed line style
       },
+      // Important: Ensure the y-axis starts from 0 to make gradient consistent
+      beginAtZero: true,
     },
   },
 };
@@ -80,21 +94,26 @@ export default function BarChartTwo() {
 
     const ctx = chart.ctx;
     const chartArea = chart.chartArea;
-    if (!chartArea) return; // ensure chart is rendered
+    if (!chartArea) return;
 
     const dataset = chart.data.datasets[0];
+    const dataMax = Math.max(...dataset.data);
+    const dataMin = 0; // Assuming y-axis starts from 0
 
-    // Create individual gradient for each bar
-    dataset.backgroundColor = dataset.data.map(() => {
+    dataset.backgroundColor = dataset.data.map((value) => {
+      const gradientStart = chart.scales.y.getPixelForValue(dataMax);
+      const gradientEnd = chart.scales.y.getPixelForValue(dataMin);
+
       const gradient = ctx.createLinearGradient(
         0,
-        chartArea.bottom,
+        gradientStart,
         0,
-        chartArea.top
+        gradientEnd
       );
-      gradient.addColorStop(1, "rgba(224, 184, 85, 1)"); // Start color
-      gradient.addColorStop(0.5, "rgba(163, 142, 90, 1)"); // Mid color
-      gradient.addColorStop(0, "rgba(48, 48, 48, 0)"); // End color
+      gradient.addColorStop(0, "rgb(236, 194, 89)"); // Top color
+      gradient.addColorStop(0.5, "rgb(163, 136, 72)"); // Mid color
+
+      gradient.addColorStop(1, "rgba(48, 48, 48, 0.1)");
       return gradient;
     });
 
@@ -102,7 +121,7 @@ export default function BarChartTwo() {
   }, []);
 
   return (
-    <div style={{ width: "400px", height: "250px" }}>
+    <div style={{ width: "400px", height: "200px" }}>
       <Bar
         ref={chartRef}
         data={data}
@@ -111,5 +130,3 @@ export default function BarChartTwo() {
     </div>
   );
 }
-
-// rgba(163, 142, 90, 1)
