@@ -15,7 +15,7 @@ import { playingHistory } from "@/data/match-data";
 
 const Highlights = () => {
   return (
-    <div className="h-full w-full backdrop-blur-sm bg-transparent shadow-2xl flex flex-col">
+    <div className="h-full w-full backdrop-blur-sm bg-gray-900/35 shadow-2xl rounded-xl flex flex-col">
       <CareerCard />
 
       <div className="mt-5 px-8">
@@ -24,7 +24,7 @@ const Highlights = () => {
         </div>
 
         {/* Scrollable Table */}
-        <div className="h-[62%] overflow-y-scroll no-scrollbar">
+        <div className="h-[65%] overflow-y-scroll no-scrollbar">
           <Table className="w-full">
             {/* Table Header */}
             <TableHeader className="sticky top-0 z-10">

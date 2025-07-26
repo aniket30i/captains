@@ -1,12 +1,17 @@
+"use client";
 import React from "react";
-import { Card } from "../ui/card";
+import WinLossLineCard from "../graphs/WinLossLineCard";
 
 const Stats = () => {
   return (
-    <div className="h-[100%] w-full backdrop-blur-sm bg-transparent shadow-2xl">
-      <Card className="h-32 w-full p-4 backdrop-blur-sm bg-transparent ">
-        Stats
-      </Card>
+    <div className="h-full w-full">
+      <WinLossLineCard />
+      <div className="grid grid-cols-2 h-[70%] gap-x-2 gap-y-1 p-1">
+        <div className="bg-red-200 rounded-xl">1</div>
+        <div className="bg-blue-200 rounded-xl">2</div>
+        <div className="bg-green-200 rounded-xl">3</div>
+        <div className="bg-yellow-200 rounded-xl">4</div>
+      </div>
     </div>
   );
 };

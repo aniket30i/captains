@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import { Card } from "../ui/card";
 import Image from "next/image";
@@ -21,7 +22,7 @@ const captainData = [
 const CareerCard = () => {
   return (
     <Card className="h-48 w-full p-6 bg-transparent border-none">
-      <div className="flex text-white -mb-5 gap-4">
+      <div className="flex text-white -mb-5 gap-4 pl-2">
         <div>
           <Image
             src={captainData[0].image}
