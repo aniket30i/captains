@@ -85,7 +85,7 @@ const options = {
 
 export default function MyLineChart() {
   return (
-    <div style={{ height: "175px" }}>
+    <div style={{ height: "180px" }}>
       <Line data={data} options={options} />
     </div>
   );
