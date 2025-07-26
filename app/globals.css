@@ -158,3 +158,9 @@
     background-image: url("/background/Background.png");
   }
 }
+
+@layer components {
+  .table-border-dsg {
+    @apply px-1 py-[2px] text-center border-white/10 border-2;
+  }
+}

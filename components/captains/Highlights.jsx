@@ -2,104 +2,78 @@ import React from "react";
 import { Card } from "../ui/card";
 import Image from "next/image";
 import Badge from "./Badge";
-
-const captainData = [
-  {
-    name: "NOAH TECHIE",
-    position: "CAPTAIN",
-    experience: "4",
-    country: "IN",
-    grade: "B-",
-    rating: "89.2",
-    score: "621+",
-    netWin: "54%",
-    wins: "184",
-    losses: "30",
-    image: "/profile-picture/Coach-Avatar.png",
-  },
-];
+import CareerCard from "./CareerCard";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "../ui/table";
+import { playingHistory } from "@/data/match-data";
 
 const Highlights = () => {
   return (
     <div className="h-[100%] w-full backdrop-blur-sm bg-transparent shadow-2xl">
-      <Card className="h-48 w-full p-6 bg-transparent border-none">
-        <div className="flex text-white -mb-5">
-          <div>
-            <Image
-              src={captainData[0].image}
-              width={130}
-              height={130}
-              alt="profile-picture"
-            />
-          </div>
-          <div className="flex flex-col justify-center gap-1">
-            <div className="w-[55%] flex bg-black">
-              <div className="border-b-6 border-badge-blue w-[60%]">
-                <Image
-                  src={"/icons/star-icon.png"}
-                  width={40}
-                  height={36}
-                  alt="star-icon"
-                />
-              </div>
-              <div className="border-b-6 border-gray-600 px-2 font-gobold flex items-center text-xl w-[40%]">
-                {captainData[0].country}
-              </div>
-            </div>
-            <div className="font-gobold flex gap-2 text-xl">
-              <span className="text-captain-yellow">
-                {captainData[0].position}
-              </span>
-              <span className="text-gray-200 ">
-                {"  "}
-                {captainData[0].experience} Years
-              </span>
-            </div>
-            <div>
-              <h2 className="font-gobold text-4xl italic">
-                {captainData[0].name}
-              </h2>
-            </div>
-          </div>
+      <CareerCard />
+      <div className="mt-5 px-8 max-h-full">
+        <div className="bg-black h-12 flex justify-center items-center">
+          <h3 className="font-gobold text-white">PLAYER HISTORY</h3>
         </div>
-        <div className="flex gap-[2px] text-white pl-2">
-          <Badge
-            text={"GRADE"}
-            content={captainData[0].grade}
-            lowerBg={"bg-captain-green"}
-          />
-          <Badge
-            text={"RATING"}
-            content={captainData[0].rating}
-            lowerBg={"bg-captain-yellow"}
-          />
-          <Badge
-            text={"SCORE"}
-            content={captainData[0].score}
-            lowerBg={"bg-captain-green"}
-            trend="up"
-          />
-          <Badge
-            text={"NET WIN %"}
-            content={captainData[0].netWin}
-            lowerBg={"bg-captain-yellow"}
-          />
-          <Badge
-            text={"WINS"}
-            content={captainData[0].wins}
-            upperBg="bg-black"
-            lowerBg={"bg-captain-green"}
-            trend="up"
-          />
-          <Badge
-            text={"LOSSES"}
-            content={captainData[0].losses}
-            upperBg="bg-black"
-            lowerBg={"bg-captain-red"}
-            trend="down"
-          />
+        <div className="max-h-full overflow-y-auto">
+          <Table className="w-full">
+            {/* Table Header */}
+            <TableHeader className="sticky top-0 z-10">
+              <TableRow className="bg-captain-yellow text-black font-gobold italic text-sm uppercase">
+                <TableHead className="p-1 text-center border-black border-2 sticky top-0 z-10">
+                  Year
+                </TableHead>
+                <TableHead className="p-1 text-center border-black border-2">
+                  Team
+                </TableHead>
+                <TableHead className="p-1 text-center border-black border-2">
+                  Level
+                </TableHead>
+                <TableHead className="p-1 text-center border-black border-2">
+                  Player Position
+                </TableHead>
+                <TableHead className="p-1 text-center border-black border-2 border-r-0">
+                  Record
+                </TableHead>
+              </TableRow>
+            </TableHeader>
+
+            {/* Table Body */}
+            <TableBody>
+              {playingHistory.map((item, i) => (
+                <TableRow
+                  key={item.year}
+                  className={`${
+                    i % 2 === 0 ? "bg-black" : "bg-gray-900/50"
+                  } text-white font-gobold text-sm`}
+                >
+                  <TableCell className="table-border-dsg border-l-0">
+                    {item.year}
+                  </TableCell>
+                  <TableCell className="table-border-dsg">
+                    {item.team}
+                  </TableCell>
+                  <TableCell className="table-border-dsg">
+                    {item.level}
+                  </TableCell>
+                  <TableCell className="table-border-dsg">
+                    {item.playerPosition}
+                  </TableCell>
+                  <TableCell className="table-border-dsg border-r-0">
+                    {item.record}
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
         </div>
-      </Card>
+      </div>
     </div>
   );
 };
