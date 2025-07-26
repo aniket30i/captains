@@ -15,18 +15,21 @@ import { playingHistory } from "@/data/match-data";
 
 const Highlights = () => {
   return (
-    <div className="h-[100%] w-full backdrop-blur-sm bg-transparent shadow-2xl">
+    <div className="h-full w-full backdrop-blur-sm bg-transparent shadow-2xl flex flex-col">
       <CareerCard />
-      <div className="mt-5 px-8 max-h-full">
+
+      <div className="mt-5 px-8">
         <div className="bg-black h-12 flex justify-center items-center">
           <h3 className="font-gobold text-white">PLAYER HISTORY</h3>
         </div>
-        <div className="max-h-full overflow-y-auto">
+
+        {/* Scrollable Table */}
+        <div className="h-[62%] overflow-y-scroll no-scrollbar">
           <Table className="w-full">
             {/* Table Header */}
             <TableHeader className="sticky top-0 z-10">
               <TableRow className="bg-captain-yellow text-black font-gobold italic text-sm uppercase">
-                <TableHead className="p-1 text-center border-black border-2 sticky top-0 z-10">
+                <TableHead className="p-1 text-center border-black border-2">
                   Year
                 </TableHead>
                 <TableHead className="p-1 text-center border-black border-2">
