@@ -27,7 +27,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="flex gap-6 bg-none p-4 justify-between px-28 items-center relative">
+    <nav className="flex gap-6 bg-none p-4 justify-between px-42 items-center relative">
       <Link href={"/"}>
         <Image
           src={"/logos/branding.png"}
