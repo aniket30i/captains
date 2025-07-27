@@ -1,4 +1,4 @@
-import SearchTabs from "@/components/layout/SearchTabs";
+import SearchTabs from "@/components/layout/RouteTabs";
 import Image from "next/image";
 
 // const gobold = localFont({

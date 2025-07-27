@@ -15,7 +15,6 @@ const Stats = () => {
       <div className="grid grid-cols-2 h-[70%] gap-x-2 gap-y-1 p-1">
         <WinLossPlayPosCard />
         <NetWinYearCard />
-
         <NetWinPercPlayPosCard />
         <NetWinPosCard />
       </div>

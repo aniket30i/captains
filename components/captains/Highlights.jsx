@@ -10,10 +10,10 @@ import {
 } from "../ui/table";
 import { playingHistory } from "@/data/match-data";
 
-const Highlights = () => {
+const Highlights = ({ activeCaptainData }) => {
   return (
     <div className="h-full w-full backdrop-blur-sm bg-gray-900/35 shadow-2xl rounded-xl flex flex-col">
-      <CareerCard />
+      <CareerCard activeCaptainData={activeCaptainData} />
 
       <div className="mt-5 px-8">
         <div className="bg-black h-12 flex justify-center items-center">

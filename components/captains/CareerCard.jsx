@@ -19,13 +19,14 @@ const captainData = [
     image: "/profile-picture/Coach-Avatar.png",
   },
 ];
-const CareerCard = () => {
+const CareerCard = ({ activeCaptainData }) => {
+  console.log("Active Captain Data:", activeCaptainData);
   return (
     <Card className="h-48 w-full p-6 bg-transparent border-none">
       <div className="flex text-white -mb-5 gap-4 pl-2">
         <div>
           <Image
-            src={captainData[0].image}
+            src={activeCaptainData.image}
             width={130}
             height={130}
             alt="profile-picture"
@@ -42,21 +43,21 @@ const CareerCard = () => {
               />
             </div>
             <div className="border-b-6 border-gray-600 px-2 font-gobold flex items-center text-xl w-[40%]">
-              {captainData[0].country}
+              {activeCaptainData.country}
             </div>
           </div>
           <div className="font-gobold flex gap-2 text-xl">
             <span className="text-captain-yellow">
-              {captainData[0].position}
+              {activeCaptainData.position}
             </span>
             <span className="text-gray-200 ">
               {"  "}
-              {captainData[0].experience} Years
+              {activeCaptainData.experience} Years
             </span>
           </div>
           <div>
             <h2 className="font-gobold text-4xl italic">
-              {captainData[0].name}
+              {activeCaptainData.name}
             </h2>
           </div>
         </div>
@@ -64,35 +65,35 @@ const CareerCard = () => {
       <div className="flex gap-[2px] text-white px-2">
         <Badge
           text={"GRADE"}
-          content={captainData[0].grade}
+          content={activeCaptainData.grade}
           lowerBg={"bg-captain-green"}
         />
         <Badge
           text={"RATING"}
-          content={captainData[0].rating}
+          content={activeCaptainData.rating}
           lowerBg={"bg-captain-yellow"}
         />
         <Badge
           text={"SCORE"}
-          content={captainData[0].score}
+          content={activeCaptainData.score}
           lowerBg={"bg-captain-green"}
           trend="up"
         />
         <Badge
           text={"NET WIN %"}
-          content={captainData[0].netWin}
+          content={activeCaptainData.netWin}
           lowerBg={"bg-captain-yellow"}
         />
         <Badge
           text={"WINS"}
-          content={captainData[0].wins}
+          content={activeCaptainData.wins}
           upperBg="bg-black"
           lowerBg={"bg-captain-green"}
           trend="up"
         />
         <Badge
           text={"LOSSES"}
-          content={captainData[0].losses}
+          content={activeCaptainData.losses}
           upperBg="bg-black"
           lowerBg={"bg-captain-red"}
           trend="down"
