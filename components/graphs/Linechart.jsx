@@ -35,7 +35,7 @@ export default function MyLineChart({ plotData }) {
         borderColor: "#e3be65",
         backgroundColor: "rgba(227, 189, 100, 0.3)",
         fill: true,
-        pointRadius: 0,
+        pointRadius: 2,
       },
       {
         label: "Dataset 2",
@@ -43,7 +43,7 @@ export default function MyLineChart({ plotData }) {
         borderColor: "#ff0048",
         backgroundColor: "rgba(166, 17, 60, 0.3)",
         fill: true,
-        pointRadius: 0,
+        pointRadius: 2,
       },
     ],
   };

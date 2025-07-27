@@ -19,7 +19,7 @@ const navItems = [
 const userDrop = ["Profile", " Settings", "Logout"];
 
 export default function Navbar() {
-  const pathname = usePathname();
+  const pathname = usePathname("CAPTAINS");
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
   const toggleDropdown = () => {
