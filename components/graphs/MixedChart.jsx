@@ -187,117 +187,133 @@ ChartJS.register(
 );
 
 // Removed the initial empty string from labels
-const labels = ["January", "February", "March", "April"];
 
-const data = {
-  labels,
-  datasets: [
-    {
-      type: "line",
-      label: "Average",
-      tension: 0,
-      yAxisID: "yLine",
-      // Changed data to start directly with the first value
-      data: [2, 2, 2, 3],
-      borderColor: "#ff0048",
-      backgroundColor: "rgba(255, 0, 72, 0.3)",
-      tension: 0.4,
-      fill: false,
-      // Adjusted pointRadius to start with 4 for the first data point
-      pointRadius: [4, 4, 4, 4],
-      pointBackgroundColor: "#ff0048",
-      datalabels: {
-        color: "#fff",
-        anchor: "start",
-        align: "bottom",
-        font: { weight: "bold", size: 10 },
-        formatter: (value, context) => {
-          // No need to check for index 0 anymore as all points will have labels
-          return value;
-        },
-      },
-    },
-    {
-      type: "bar",
-      label: "Sales",
-      yAxisID: "yBar",
-      // Changed data to start directly with the first value
-      data: [55, 56, 62, 65],
-      backgroundColor: [],
-      borderRadius: 6,
-      datalabels: {
-        color: "#fff",
-        anchor: "end",
-        align: "end",
-        offset: -35,
-        font: { weight: "bold", size: 16 },
-        formatter: function (value) {
-          return value !== null ? value + "%" : null;
-        },
-      },
-    },
-  ],
-};
-
-const options = {
-  responsive: true,
-  plugins: {
-    legend: { display: false },
-  },
-  scales: {
-    x: {
-      ticks: { color: "#fff" },
-      grid: {
-        color: "rgba(227, 189, 100, 0.4)",
-        drawOnChartArea: false,
-        drawTicks: false,
-      },
-      border: { display: false },
-    },
-    yBar: {
-      type: "linear",
-      position: "left",
-      min: 0,
-      max: 100,
-      ticks: {
-        stepSize: 50,
-        callback: (value) =>
-          value === 0 || value === 50 || value === 100 ? value : "",
-        color: "#fff",
-      },
-      grid: {
-        color: "rgba(227, 189, 100, 0.4)",
-        tickBorderDash: [0, 1],
-      },
-      border: {
-        display: true,
-        dash: [5, 3],
-      },
-    },
-    yLine: {
-      type: "linear",
-      position: "right",
-      min: 0,
-      max: 10,
-      ticks: {
-        stepSize: 5,
-        callback: (value) =>
-          value === 0 || value === 5 || value === 10 ? value : "",
-        color: "#fff",
-      },
-      grid: {
-        drawOnChartArea: false,
-      },
-      border: {
-        display: true,
-        dash: [5, 3],
-      },
-    },
-  },
-};
-
-export default function MixedChart() {
+export default function MixedChart({ plotData, secondaryData }) {
   const chartRef = useRef(null);
+
+  const labels = Object.keys(plotData);
+  const Ynames = labels.map((label) => label.toUpperCase());
+
+  const percentages = labels.map((label) => {
+    const w = plotData[label].wins || 0;
+    const l = plotData[label].losses || 0;
+    const total = w + l;
+    return total > 0 ? Math.floor((w / total) * 100) : 0;
+  });
+
+  const dataValues = Object.values(secondaryData);
+  const data = {
+    labels: Ynames,
+    datasets: [
+      {
+        type: "line",
+        label: "Average",
+        tension: 0,
+        yAxisID: "yLine",
+        // Changed data to start directly with the first value
+        data: dataValues,
+        borderColor: "#ff0048",
+        backgroundColor: "rgba(255, 0, 72, 0.3)",
+        tension: 0.4,
+        fill: false,
+        // Adjusted pointRadius to start with 4 for the first data point
+        pointRadius: 4,
+        pointBackgroundColor: "#ff0048",
+        datalabels: {
+          color: "#fff",
+          anchor: "start",
+          align: "bottom",
+          font: { weight: "bold", size: 10 },
+          formatter: (value, context) => {
+            // No need to check for index 0 anymore as all points will have labels
+            return value;
+          },
+        },
+      },
+      {
+        type: "bar",
+        label: "Sales",
+        yAxisID: "yBar",
+        // Changed data to start directly with the first value
+        data: percentages,
+        backgroundColor: [],
+        borderRadius: 6,
+        datalabels: {
+          color: "#fff",
+          anchor: "end",
+          align: "end",
+          offset: -35,
+          font: { weight: "bold", size: 16 },
+          formatter: function (value) {
+            return value !== null ? value + "%" : null;
+          },
+        },
+      },
+    ],
+  };
+
+  const options = {
+    responsive: true,
+    plugins: {
+      legend: { display: false },
+    },
+    scales: {
+      x: {
+        ticks: { color: "#fff" },
+        grid: {
+          color: "rgba(227, 189, 100, 0.4)",
+          drawOnChartArea: false,
+          drawTicks: false,
+        },
+        border: { display: false },
+        ticks: {
+          font: {
+            size: 10,
+            weight: "700",
+          },
+        },
+      },
+      yBar: {
+        type: "linear",
+        position: "left",
+        min: 0,
+        max: 100,
+        ticks: {
+          stepSize: 50,
+          callback: (value) =>
+            value === 0 || value === 50 || value === 100 ? value : "",
+          color: "#fff",
+        },
+        grid: {
+          color: "rgba(227, 189, 100, 0.4)",
+          tickBorderDash: [0, 1],
+        },
+        border: {
+          display: true,
+          dash: [5, 3],
+        },
+      },
+      yLine: {
+        type: "linear",
+        position: "right",
+        min: 0,
+        max: 10,
+        ticks: {
+          stepSize: 5,
+          callback: (value) =>
+            value === 0 || value === 5 || value === 10 ? value : "",
+          color: "#fff",
+        },
+        grid: {
+          drawOnChartArea: false,
+        },
+        border: {
+          display: true,
+          dash: [5, 3],
+        },
+      },
+    },
+  };
 
   useEffect(() => {
     const chart = chartRef.current;

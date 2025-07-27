@@ -23,70 +23,80 @@ ChartJS.register(
   ChartDataLabels
 );
 
-const labels = ["January", "February", "March", "April"];
-
-const data = {
-  labels,
-  datasets: [
-    {
-      label: "Sales",
-      data: [13, 24, 35, 54],
-      borderRadius: {
-        topLeft: 10,
-        topRight: 10,
-        bottomLeft: 0,
-        bottomRight: 0,
-      },
-      backgroundColor: [], // Will be set dynamically in useEffect
-    },
-  ],
-};
-
-const options = {
-  responsive: true,
-  plugins: {
-    legend: { display: false },
-    title: { display: false },
-    datalabels: {
-      color: "white",
-      anchor: "center",
-      align: "center",
-      font: {
-        weight: "bold",
-        size: 20,
-      },
-    },
-  },
-
-  scales: {
-    x: {
-      ticks: { color: "#fff" },
-      grid: {
-        drawOnChartArea: false, // Hide vertical grid lines
-        drawTicks: false,
-        color: "rgba(227, 189, 100, 0.4)",
-        tickBorderDash: [0, 1],
-      },
-      border: { display: false }, // Hide x-axis line
-    },
-    y: {
-      ticks: { color: "#fff" },
-      grid: {
-        color: "rgba(227, 189, 100, 0.4)", // Horizontal grid lines
-        tickBorderDash: [0, 1],
-      },
-      border: {
-        display: true,
-        dash: [5, 3], // Dashed line style
-      },
-      // Important: Ensure the y-axis starts from 0 to make gradient consistent
-      beginAtZero: true,
-    },
-  },
-};
-
-export default function BarChartTwo() {
+export default function BarChartTwo({ plotData }) {
   const chartRef = useRef(null);
+
+  // console.log("plotData from grad chart :", plotData);
+
+  const labels = Object.keys(plotData);
+  const wins = labels.map((label) => plotData[label].wins || 0);
+  const Ynames = labels.map((label) => label.toUpperCase());
+
+  const data = {
+    labels: Ynames,
+    datasets: [
+      {
+        label: "Sales",
+        data: wins,
+        borderRadius: {
+          topLeft: 10,
+          topRight: 10,
+          bottomLeft: 0,
+          bottomRight: 0,
+        },
+        backgroundColor: [], // Will be set dynamically in useEffect
+      },
+    ],
+  };
+
+  const options = {
+    responsive: true,
+    plugins: {
+      legend: { display: false },
+      title: { display: false },
+      datalabels: {
+        color: "white",
+        anchor: "center",
+        align: "center",
+        font: {
+          weight: "bold",
+          size: 20,
+        },
+      },
+    },
+
+    scales: {
+      x: {
+        ticks: { color: "#fff" },
+        grid: {
+          drawOnChartArea: false, // Hide vertical grid lines
+          drawTicks: false,
+          color: "rgba(227, 189, 100, 0.4)",
+          tickBorderDash: [0, 1],
+        },
+        border: { display: false }, // Hide x-axis line
+      },
+      y: {
+        ticks: { color: "#fff" },
+        grid: {
+          color: "rgba(227, 189, 100, 0.4)", // Horizontal grid lines
+          tickBorderDash: [0, 1],
+        },
+        border: {
+          display: true,
+          dash: [5, 3], // Dashed line style
+        },
+        ticks: {
+          font: {
+            size: 12,
+            weight: "400",
+          },
+        },
+        // Important: Ensure the y-axis starts from 0 to make gradient consistent
+        beginAtZero: true,
+      },
+    },
+  };
 
   useEffect(() => {
     const chart = chartRef.current;

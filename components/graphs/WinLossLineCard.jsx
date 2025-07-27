@@ -1,7 +1,9 @@
 import React from "react";
 import LineChart from "../graphs/Linechart";
+import { usePlayingData } from "@/hooks/usePlayingData";
 
 const WinLossLineCard = () => {
+  const { winLossSixteen } = usePlayingData();
   return (
     <div className="p-2 backdrop-blur-md bg-[#161A2566] rounded-xl content-shadow">
       <p className="text-lg text-white font-gobold uppercase">
@@ -15,7 +17,7 @@ const WinLossLineCard = () => {
           <span className="text-2xl text-captain-red">&#9679;</span> losses
         </p>
       </div>
-      <LineChart />
+      <LineChart plotData={winLossSixteen} />
     </div>
   );
 };
