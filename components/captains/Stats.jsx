@@ -4,6 +4,7 @@ import WinLossLineCard from "../graphs/WinLossLineCard";
 import NetWinPosCard from "../graphs/NetWinPosCard";
 import NetWinYearCard from "../graphs/NetWinYearCard";
 import WinLossPlayPosCard from "../graphs/WinLossPlayPosCard";
+import NetWinPercPlayPosCard from "../graphs/NetWinPercPlayPosCard";
 
 /////////////////////
 
@@ -14,7 +15,8 @@ const Stats = () => {
       <div className="grid grid-cols-2 h-[70%] gap-x-2 gap-y-1 p-1">
         <WinLossPlayPosCard />
         <NetWinYearCard />
-        <div className="bg-green-200 rounded-xl">3</div>
+
+        <NetWinPercPlayPosCard />
         <NetWinPosCard />
       </div>
     </div>
