@@ -3,7 +3,7 @@ import LineChart from "../graphs/Linechart";
 
 const WinLossLineCard = () => {
   return (
-    <div className="p-2 backdrop-blur-md bg-gray-900/35 shadow-2xl rounded-xl">
+    <div className="p-2 backdrop-blur-md bg-[#161A2566] rounded-xl content-shadow">
       <p className="text-lg text-white font-gobold uppercase">
         Win and losses by year
       </p>

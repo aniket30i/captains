@@ -3,7 +3,7 @@ import VerticalBarChart from "../graphs/VerticalBarChart";
 
 const NetWinYearCard = () => {
   return (
-    <div className="p-2 backdrop-blur-md bg-gray-900/35 shadow-2xl rounded-xl flex flex-col">
+    <div className="p-2 backdrop-blur-md bg-[#161A2566] content-shadow rounded-xl flex flex-col">
       <p className="text-lg text-white font-gobold uppercase p-2">
         Net win by year
       </p>

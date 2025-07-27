@@ -164,6 +164,12 @@
   .table-border-dsg {
     @apply px-1 py-[2px] text-center border-white/10 border-2;
   }
+  .tab-shadow {
+    @apply backdrop-blur-[21.7px] shadow-[0px_10.31px_11.99px_0px_#00000066,0px_2.17px_3.25px_0px_#0000004D];
+  }
+  .content-shadow {
+    @apply backdrop-blur-[40px] shadow-[0px_19px_22.1px_0px_#00000066,0px_4px_6px_0px_#0000004D];
+  }
 }
 
 @utility no-scrollbar {

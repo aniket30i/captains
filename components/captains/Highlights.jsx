@@ -12,7 +12,7 @@ import { playingHistory } from "@/data/match-data";
 
 const Highlights = ({ activeCaptainData }) => {
   return (
-    <div className="h-full w-full backdrop-blur-sm bg-gray-900/35 shadow-2xl rounded-xl flex flex-col">
+    <div className="h-full w-full backdrop-blur-sm rounded-xl flex flex-col bg-[#161A2566] content-shadow">
       <CareerCard activeCaptainData={activeCaptainData} />
 
       <div className="mt-5 px-8">
