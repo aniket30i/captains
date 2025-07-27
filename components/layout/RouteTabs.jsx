@@ -24,7 +24,7 @@ export default function RouteTabs({ tabs, active }) {
                 active === tab.slug ? "text-captain-yellow" : "text-[#707070]"
               )}
             >
-              <p className="flex justify-center items-center gap-2">
+              <p className="flex justify-between items-center gap-2 mx-2">
                 {tab.name}
                 <XCircle className="w-3 h-3" />
               </p>

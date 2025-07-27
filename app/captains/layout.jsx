@@ -5,6 +5,7 @@ import Stats from "@/components/captains/Stats";
 import RouteTabs from "@/components/layout/RouteTabs";
 import { captainData } from "@/data/captain-data";
 import { usePathname } from "next/navigation";
+import SearchButton from "@/components/layout/SearchButton";
 
 function generateSlug(name) {
   return name.toLowerCase().replace(/\s+/g, "-");
@@ -25,8 +26,9 @@ export default function layout({ children }) {
   return (
     <div className="h-[880px] flex flex-col">
       {/* Tabs */}
-      <div className="flex-shrink-0 px-24 py-2">
+      <div className="flex-shrink-0 px-24 py-2 flex justify-between items-center">
         <RouteTabs tabs={tabs} active={currentSlug} />
+        <SearchButton />
       </div>
 
       {/* Main content area */}
