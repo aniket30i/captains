@@ -18,7 +18,7 @@ export default function PieChart({ plotData }) {
         data: [plotData.wins, plotData.losses],
         backgroundColor: ["#ECC259", "#ff0048"], // Two colors
         borderWidth: 0, // No gap between sectors
-        cutout: "65%",
+        cutout: "60%",
       },
     ],
   };
@@ -34,7 +34,7 @@ export default function PieChart({ plotData }) {
     },
   };
   return (
-    <div style={{ width: "160px", height: "160px" }}>
+    <div style={{ width: "165px", height: "165px" }}>
       <Pie data={data} options={options} />
     </div>
   );
