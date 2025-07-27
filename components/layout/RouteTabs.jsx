@@ -4,8 +4,8 @@ import { cn } from "@/lib/utils";
 import { XCircle } from "lucide-react";
 
 export default function RouteTabs({ tabs, active }) {
-  console.log("Tabs", tabs);
-  console.log("Active Tab name:", active);
+  // console.log("Tabs", tabs);
+  // console.log("Active Tab name:", active);
   return (
     <div className="flex gap-4">
       {tabs.map((tab) => (

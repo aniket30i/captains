@@ -18,5 +18,21 @@ export function usePlayingData() {
     }, {});
   }, []);
 
-  return positionData;
+  const winLossEight = useMemo(() => {
+    return playingHistory.reduce((acc, { year, record }) => {
+      if (year >= 2017 && year <= 2024) {
+        const [wins, losses] = record.split("-").map(Number);
+        if (!acc[year]) {
+          acc[year] = { wins: 0, losses: 0 };
+        }
+        acc[year].wins += wins;
+        acc[year].losses += losses;
+      }
+      return acc;
+    }, {});
+  }, []);
+
+  console.log("8 year win-loss data", winLossEight);
+
+  return { positionData, winLossEight };
 }

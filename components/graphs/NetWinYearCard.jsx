@@ -1,7 +1,9 @@
 import React from "react";
 import VerticalBarChart from "../graphs/VerticalBarChart";
+import { usePlayingData } from "@/hooks/usePlayingData";
 
 const NetWinYearCard = () => {
+  const { winLossEight } = usePlayingData();
   return (
     <div className="p-2 backdrop-blur-md bg-[#161A2566] content-shadow rounded-xl flex flex-col">
       <p className="text-lg text-white font-gobold uppercase p-2">
@@ -15,7 +17,7 @@ const NetWinYearCard = () => {
           <span className="text-2xl text-[#FF0048]">&#9679;</span> losses
         </p>
       </div>
-      <VerticalBarChart />
+      <VerticalBarChart plotData={winLossEight} />
     </div>
   );
 };

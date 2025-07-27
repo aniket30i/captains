@@ -12,7 +12,7 @@ import { usePlayingData } from "@/hooks/usePlayingData";
 
 const WinLossPlayPosCard = () => {
   const [selectedPosition, setSelectedPosition] = useState("captain");
-  const positionData = usePlayingData();
+  const { positionData } = usePlayingData();
   const [plotData, setPlotData] = useState(positionData["captain"]);
   // console.log("Positional Data:", positionData);
 

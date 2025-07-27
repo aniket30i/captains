@@ -61,13 +61,13 @@ export default function Navbar() {
       </div>
       <div className="flex select-none">
         <div className="flex gap-[12px] ">
-          <div>
+          <div className="border-1 border-captain-yellow rounded-full w-[40px] h-[40px] overflow-clip">
             <Image
-              src={"/icons/ai-button.png"}
-              width={10}
-              height={10}
+              src={"/icons/ai-button.svg"}
+              width={5}
+              height={5}
               alt="AI Icon"
-              className="w-[40px] h-[40px] duration-200 hover:cursor-pointer border-1 border-captain-yellow rounded-full hover:bg-white/20 p-1.5 mr-2"
+              className="w-[36px] h-[38px] duration-200 hover:cursor-pointer hover:bg-white/20 p-1.5 ml-[1px]"
             />
           </div>
           <Avatar className="w-[40px] h-[40px]">
@@ -82,7 +82,7 @@ export default function Navbar() {
             onClick={toggleDropdown}
           />
           {dropdownOpen && (
-            <div className="absolute right-13 top-11 text-gray-400 bg-navbar-bg shadow-lg rounded-md p-2 z-50 select-none cursor-pointer border-1 border-gray-800">
+            <div className="absolute right-25 top-10 text-gray-400 bg-navbar-bg shadow-lg rounded-md p-2 z-50 select-none cursor-pointer border-1 border-gray-800 h-24 w-28">
               <ul>
                 {userDrop.map((item, index) => (
                   <li key={item} className="hover:text-gray-200">
