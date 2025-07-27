@@ -14,7 +14,7 @@ const WinLossPlayPosCard = () => {
   const [selectedPosition, setSelectedPosition] = useState("captain");
   const positionData = usePlayingData();
   const [plotData, setPlotData] = useState(positionData["captain"]);
-  console.log("Positional Data:", positionData);
+  // console.log("Positional Data:", positionData);
 
   let positions = Object.keys(positionData);
 
@@ -23,7 +23,7 @@ const WinLossPlayPosCard = () => {
 
     setPlotData(positionData[position]);
   };
-  console.log("Data to be sent ->", plotData);
+  // console.log("Data to be sent ->", plotData);
   return (
     <div className="p-2 backdrop-blur-md bg-gray-900/35 shadow-2xl rounded-xl flex flex-col">
       <p className="text-lg text-white font-gobold uppercase pb-4 p-2">

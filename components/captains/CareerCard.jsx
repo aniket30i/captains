@@ -4,23 +4,8 @@ import { Card } from "../ui/card";
 import Image from "next/image";
 import Badge from "./Badge";
 
-const captainData = [
-  {
-    name: "NOAH TECHIE",
-    position: "CAPTAIN",
-    experience: "4",
-    country: "IN",
-    grade: "B-",
-    rating: "89.2",
-    score: "621+",
-    netWin: "54%",
-    wins: "184",
-    losses: "30",
-    image: "/profile-picture/Coach-Avatar.png",
-  },
-];
 const CareerCard = ({ activeCaptainData }) => {
-  console.log("Active Captain Data:", activeCaptainData);
+  // console.log("Active Captain Data:", activeCaptainData);
   return (
     <Card className="h-48 w-full p-6 bg-transparent border-none">
       <div className="flex text-white -mb-5 gap-4 pl-2">

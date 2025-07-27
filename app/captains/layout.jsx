@@ -6,18 +6,27 @@ import RouteTabs from "@/components/layout/RouteTabs";
 import { captainData } from "@/data/captain-data";
 import { usePathname } from "next/navigation";
 
-const tabs = Object.keys(captainData);
+function generateSlug(name) {
+  return name.toLowerCase().replace(/\s+/g, "-");
+}
+const tabs = captainData.map((captain) => ({
+  name: captain.name,
+  slug: generateSlug(captain.name),
+  id: Date.now() + Math.random().toString(36).substring(2, 15), // Unique ID for each tab
+}));
+console.log("tabs -> ", tabs);
 
 export default function layout({ children }) {
   const pathname = usePathname();
-  const activeTab = pathname.split("/")[2] || tabs[0];
-  const activeCaptainData =
-    captainData[activeTab.toUpperCase()] || captainData[tabs[0]];
+  const currentSlug = pathname.split("/")[2] || tabs[0].slug;
+  const activeCaptainData = captainData.find(
+    (captain) => generateSlug(captain.name) === currentSlug
+  );
   return (
     <div className="h-[880px] flex flex-col">
       {/* Tabs */}
-      <div className="flex-shrink-0">
-        <RouteTabs tabs={tabs} active={activeTab} />
+      <div className="flex-shrink-0 px-24 py-2">
+        <RouteTabs tabs={tabs} active={currentSlug} />
       </div>
 
       {/* Main content area */}
