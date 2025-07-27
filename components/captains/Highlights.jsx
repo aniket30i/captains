@@ -1,7 +1,4 @@
 import React from "react";
-import { Card } from "../ui/card";
-import Image from "next/image";
-import Badge from "./Badge";
 import CareerCard from "./CareerCard";
 import {
   Table,
