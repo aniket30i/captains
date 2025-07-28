@@ -8,7 +8,7 @@ const CareerCard = ({ activeCaptainData }) => {
   // console.log("Active Captain Data:", activeCaptainData);
   return (
     <Card className="h-48 w-full p-6 bg-transparent border-none">
-      <div className="flex text-white -mb-5 gap-4 pl-2">
+      <div className="flex text-white -mb-5 gap-4 w-96">
         <div>
           <Image
             src={activeCaptainData.image}
@@ -18,8 +18,8 @@ const CareerCard = ({ activeCaptainData }) => {
           />
         </div>
         <div className="flex flex-col justify-center gap-1">
-          <div className="w-[55%] flex bg-black">
-            <div className="border-b-6 border-badge-blue w-[60%]">
+          <div className="w-28 flex bg-black">
+            <div className="border-b-6 border-badge-blue w-1/2">
               <Image
                 src={"/icons/star-icon.png"}
                 width={40}
@@ -27,8 +27,8 @@ const CareerCard = ({ activeCaptainData }) => {
                 alt="star-icon"
               />
             </div>
-            <div className="border-b-6 border-gray-600 px-2 font-gobold flex items-center text-xl w-[40%]">
-              {activeCaptainData.country}
+            <div className="border-b-6 border-gray-600 px-2 font-gobold flex items-center text-xl w-1/2 justify-center">
+              <p>{activeCaptainData.country}</p>
             </div>
           </div>
           <div className="font-gobold flex gap-2 text-xl">
@@ -47,7 +47,7 @@ const CareerCard = ({ activeCaptainData }) => {
           </div>
         </div>
       </div>
-      <div className="flex gap-[2px] text-white px-2">
+      <div className="flex gap-[2px] text-white ">
         <Badge
           text={"GRADE"}
           content={activeCaptainData.grade}

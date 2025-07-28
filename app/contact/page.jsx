@@ -1,7 +1,8 @@
+import AvailableSoon from "@/components/AvailableSoon";
 import React from "react";
 
 const ContactPage = () => {
-  return <div>Contact</div>;
+  return <AvailableSoon />;
 };
 
 export default ContactPage;

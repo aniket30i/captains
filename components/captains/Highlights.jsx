@@ -15,13 +15,13 @@ const Highlights = ({ activeCaptainData }) => {
     <div className="h-full w-full backdrop-blur-sm rounded-xl flex flex-col bg-[#161A2566] content-shadow">
       <CareerCard activeCaptainData={activeCaptainData} />
 
-      <div className="mt-5 px-8">
+      <div className="mt-5 px-6">
         <div className="bg-black h-12 flex justify-center items-center">
           <h3 className="font-gobold text-white">PLAYER HISTORY</h3>
         </div>
 
         {/* Scrollable Table */}
-        <div className="h-[65%] overflow-y-scroll no-scrollbar">
+        <div className="h-[68%] overflow-y-scroll no-scrollbar">
           <Table className="w-full">
             {/* Table Header */}
             <TableHeader className="sticky top-0 z-10">
@@ -50,7 +50,7 @@ const Highlights = ({ activeCaptainData }) => {
                 <TableRow
                   key={item.year}
                   className={`${
-                    i % 2 === 0 ? "bg-black" : "bg-gray-900/50"
+                    i % 2 === 0 ? "bg-black" : "bg-[#141619]"
                   } text-white font-gobold text-sm`}
                 >
                   <TableCell className="table-border-dsg border-l-0">

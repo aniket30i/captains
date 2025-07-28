@@ -32,9 +32,14 @@ export default function layout({ children }) {
       </div>
 
       {/* Main content area */}
-      <div className="flex flex-1 pl-24 pr-24 gap-6 drop-s overflow-hidden">
-        <Highlights activeCaptainData={activeCaptainData} />
-        <Stats activeCaptainData={activeCaptainData} />
+      <div className="flex flex-1 pl-22 pr-22 gap-8 drop-s overflow-hidden">
+        <div className="flex-1">
+          {" "}
+          <Highlights activeCaptainData={activeCaptainData} />
+        </div>
+        <div className="flex-1">
+          <Stats activeCaptainData={activeCaptainData} />
+        </div>
       </div>
 
       {children}

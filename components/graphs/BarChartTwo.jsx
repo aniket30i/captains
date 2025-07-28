@@ -24,8 +24,6 @@ ChartJS.register(
 );
 
 export default function BarChartTwo({ plotData }) {
-  const chartRef = useRef(null);
-
   // console.log("plotData from grad chart :", plotData);
 
   const labels = Object.keys(plotData);
@@ -36,7 +34,7 @@ export default function BarChartTwo({ plotData }) {
     labels: Ynames,
     datasets: [
       {
-        label: "Sales",
+        label: "wins",
         data: wins,
         borderRadius: {
           topLeft: 10,
@@ -44,7 +42,7 @@ export default function BarChartTwo({ plotData }) {
           bottomLeft: 0,
           bottomRight: 0,
         },
-        backgroundColor: [], // Will be set dynamically in useEffect
+        backgroundColor: [], // Will be set dynamically
       },
     ],
   };
@@ -92,11 +90,13 @@ export default function BarChartTwo({ plotData }) {
             weight: "400",
           },
         },
-        // Important: Ensure the y-axis starts from 0 to make gradient consistent
+        // gradient consistent
         beginAtZero: true,
       },
     },
   };
+
+  const chartRef = useRef(null);
 
   useEffect(() => {
     const chart = chartRef.current;
@@ -128,7 +128,7 @@ export default function BarChartTwo({ plotData }) {
     });
 
     chart.update();
-  }, []);
+  }, [wins, chartRef]);
 
   return (
     <div style={{ width: "400px", height: "200px" }}>

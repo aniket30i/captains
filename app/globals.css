@@ -170,6 +170,39 @@
   .content-shadow {
     @apply backdrop-blur-[40px] shadow-[0px_19px_22.1px_0px_#00000066,0px_4px_6px_0px_#0000004D];
   }
+  /* //// loader //// */
+  .loader {
+    @apply relative inline-block;
+    width: var(--loader-size, 25px);
+    height: var(--loader-size, 25px);
+  }
+
+  .loader::before,
+  .loader::after {
+    content: "";
+    @apply absolute rounded-full;
+    left: 50%;
+    bottom: 0;
+    width: calc(var(--loader-size, 25px) * 0.76);
+    height: calc(var(--loader-size, 25px) * 0.76);
+    background: var(--loader-color, white);
+    transform: translate(-50%, -100%) scale(0);
+    animation: push_401 var(--loader-speed, 2s) infinite linear;
+  }
+
+  .loader::after {
+    animation-delay: calc(var(--loader-speed, 2s) / 2);
+  }
+
+  @keyframes push_401 {
+    0%,
+    50% {
+      transform: translate(-50%, 0%) scale(1);
+    }
+    100% {
+      transform: translate(-50%, -100%) scale(0);
+    }
+  }
 }
 
 @utility no-scrollbar {
