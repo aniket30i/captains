@@ -30,12 +30,12 @@ ChartJS.register(
 export default function MixedChart({ plotData, secondaryData }) {
   const chartRef = useRef(null);
 
-  const labels = Object.keys(plotData);
+  const labels = plotData?.map((item) => item.position);
   const Ynames = labels.map((label) => label.toUpperCase());
 
-  const percentages = labels.map((label) => {
-    const w = plotData[label].wins || 0;
-    const l = plotData[label].losses || 0;
+  const percentages = plotData.map((item) => {
+    const w = item.wins || 0;
+    const l = item.losses || 0;
     const total = w + l;
     return total > 0 ? Math.floor((w / total) * 100) : 0;
   });
@@ -107,8 +107,8 @@ export default function MixedChart({ plotData, secondaryData }) {
         ticks: {
           color: "#fff",
           font: {
-            size: 11.2,
-            weight: "700",
+            size: 8,
+            weight: "400",
           },
         },
       },

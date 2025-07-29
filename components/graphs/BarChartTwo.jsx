@@ -26,8 +26,8 @@ ChartJS.register(
 export default function BarChartTwo({ plotData }) {
   // console.log("plotData from grad chart :", plotData);
 
-  const labels = Object.keys(plotData);
-  const wins = labels.map((label) => plotData[label].wins || 0);
+  const labels = plotData?.map((item) => item.position);
+  const wins = plotData?.map((item) => item.wins);
   const Ynames = labels.map((label) => label.toUpperCase());
 
   const data = {
@@ -73,6 +73,13 @@ export default function BarChartTwo({ plotData }) {
           tickBorderDash: [0, 1],
         },
         border: { display: false }, // Hide x-axis line
+        ticks: {
+          color: "#fff",
+          font: {
+            size: 9,
+            weight: "400",
+          },
+        },
       },
       y: {
         ticks: { color: "#fff" },

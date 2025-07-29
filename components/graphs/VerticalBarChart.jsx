@@ -20,11 +20,11 @@ ChartJS.register(
 );
 
 export default function VerticalWinLossChart({ plotData }) {
-  const labels = Object.keys(plotData);
+  const labels = plotData.map((item) => item.year);
 
   // Example wins and losses per year
-  const wins = labels.map((year) => plotData[year].wins || 0);
-  const losses = labels.map((year) => plotData[year].losses || 0);
+  const wins = plotData.map((item) => item.wins) || 0;
+  const losses = plotData.map((item) => item.losses) || 0;
 
   const data = {
     labels,

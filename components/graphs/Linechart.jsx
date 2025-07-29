@@ -23,9 +23,9 @@ ChartJS.register(
 );
 
 export default function MyLineChart({ plotData }) {
-  const labels = Object.keys(plotData);
-  const wins = labels.map((year) => plotData[year].wins || 0);
-  const losses = labels.map((year) => plotData[year].losses || 0);
+  const labels = plotData?.map((item) => item.year);
+  const wins = plotData?.map((item) => item.wins);
+  const losses = plotData?.map((item) => item.losses);
   const data = {
     labels,
     datasets: [

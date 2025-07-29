@@ -10,7 +10,7 @@ import { Pie } from "react-chartjs-2";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-export default function PieChart({ plotData }) {
+export default function PieChart({ plotData = { wins: 1, losses: 1 } }) {
   const data = {
     labels: ["Win", "Loss"],
     datasets: [
